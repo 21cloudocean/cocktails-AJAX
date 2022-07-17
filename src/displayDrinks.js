@@ -1,10 +1,12 @@
 import get from "./getElement.js";
+import { hideLoading } from "./toggleLoading.js";
 const displayDrinks = ({ drinks }) => {
   const section = get(".section-center");
   const title = get(".title");
   if (!drinks) {
-    title.textContent = `Sorry, no matched drink`;
     //hide loading
+    hideLoading();
+    title.textContent = `Sorry, no matched drink`;
     section.innerHTML = null;
     return;
   }
@@ -19,7 +21,8 @@ const displayDrinks = ({ drinks }) => {
         </a>`;
     })
     .join("");
-  // hide loading
+  //hide loading
+  hideLoading();
   title.textContent = ``;
   section.innerHTML = newDrinks;
   return section;
